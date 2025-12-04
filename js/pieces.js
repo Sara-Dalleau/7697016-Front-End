@@ -29,18 +29,38 @@ pieceElement.appendChild(categorieElement);
 pieceElement.appendChild(descriptionElement);
 pieceElement.appendChild(disponibiliteElement);
 }
+const boutonTrier = document.querySelector(".btn-trier");
+
+boutonTrier.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function (a, b) {
+        return a.prix - b.prix;
+     });
+     console.log(piecesOrdonnees);
+});
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
+   console.log(piecesFiltrees)
+});
 
 const btnDescription = document.querySelectorAll("btn-description");
 btnDescription.addEventListener("click", () => {
-  const piecesSansDescription = pieces.filter(function(pieces){
-    return pieces.description != null;
+  const piecesSansDescription = pieces.filter(function(piece){
+    return piece.description;
   });
+  console.log(piecesSansDescription);
 })
 
 const btnDecroissant = document.querySelector(".btn-prix-decroissant");
 btnDecroissant.addEventListener("click", () => {
   const piecesDecroissant = Array.from(pieces);
-  piecesDecroissant = pieces.sort(function(a, b){
+  piecesDecroissant.sort(function(a, b){
     return b.prix - a.prix;
   });
+  console.log(piecesDecroissant);
 })
