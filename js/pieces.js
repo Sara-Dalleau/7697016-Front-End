@@ -30,3 +30,17 @@ pieceElement.appendChild(descriptionElement);
 pieceElement.appendChild(disponibiliteElement);
 }
 
+const btnDescription = document.querySelectorAll("btn-description");
+btnDescription.addEventListener("click", () => {
+  const piecesSansDescription = pieces.filter(function(pieces){
+    return pieces.description != null;
+  });
+})
+
+const btnDecroissant = document.querySelector(".btn-prix-decroissant");
+btnDecroissant.addEventListener("click", () => {
+  const piecesDecroissant = Array.from(pieces);
+  piecesDecroissant = pieces.sort(function(a, b){
+    return b.prix - a.prix;
+  });
+})
