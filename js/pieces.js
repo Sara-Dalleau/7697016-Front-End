@@ -64,3 +64,22 @@ btnDecroissant.addEventListener("click", () => {
   });
   console.log(piecesDecroissant);
 })
+
+const noms = pieces.map(piece => piece.nom);
+for (let i = pieces.length - 1; i>= 0; i--){
+  if (pices[i].prix > 35){
+    noms.splice(i, 1);
+  }
+}
+// Création de la liste
+
+const abordablesElements = document.createElement("ul");
+//Ajout de chaque nom à la liste
+for (let i = 0; i < noms.length; i++){
+  const nomElement = document.createElement("li");
+  nomElement.innerText = noms[i];
+  abordablesElements.appendChild(nomElement);
+}
+// ajout de l'en tête puis de la liste au bloc résultats filtres
+document.querySelector(".abordables").appendChild(abordablesElements)
+
