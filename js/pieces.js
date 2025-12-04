@@ -83,3 +83,20 @@ for (let i = 0; i < noms.length; i++){
 // ajout de l'en tête puis de la liste au bloc résultats filtres
 document.querySelector(".abordables").appendChild(abordablesElements)
 
+const nomsDisponibles = pieces.map(piece => piece.nom);
+const prixDisponible = pieces.map(piece => piece.prix);
+
+
+for (let i = pieces.length -1 ; i >= 0 ; i--) {
+if(pieces[i].disponibilite === false) {
+  nomsDisponibles.splice(i, 1);
+  prixDisponible.splice(i, 1);
+ }
+}
+const elementDisponible = document.createElement("ul");
+for (let i = 0; i < nomsDisponibles.length; i++) {
+  const nomElement = document.createElement("li");
+  nomElement.innerText = `${nomsDisponibles[i]} - ${prixDisponible[i]} €`;
+  elementDisponible.appendChild(nomElement);
+}
+document.querySelector(".disponibles").appendChild(elementDisponible);
